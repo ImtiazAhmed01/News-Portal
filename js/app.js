@@ -35,30 +35,32 @@ const newsBulletin = allNews => {
         const newsDiv = document.createElement('div');
         newsDiv.classList.add('col');
         newsDiv.innerHTML = `
-    <div class="d-flex justify-content-between flex-cloumn flex-md-row shadow-sm card mb-3 ms-3"
-            style="max-width: 540px;">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="${news.thumbnail_url}" class="img-fluid rounded-start"
-                            alt="...">
-                    </div>
-                    <div class="col">
-                        <div class="card-body">
-                            <h5 class="card-title">${news.title}</h5>
-                            <p class="card-text">${news.details}</p>
-                            <div class="d-flex">
-                            <div>
-                                <img class="img-fluid rounded-circle" src="${news.author.img}">
-                            </div>
-                            <div>
-                                <p class="card-text"><small class="text-info">${news.author['name']}</small></p>
-                                <p class="card-text"><small class="text-info">${news.author['published_date']}</small></p>
-                            </div>
-                            </div>
+        <div class="d-flex justify-content-between flex-cloumn flex-md-row shadow-sm card mb-3 ms-3"
+        style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="${news.thumbnail_url}" class="img-fluid rounded-start"
+                        alt="...">
+                </div>
+                <div class="col">
+                    <div class="card-body">
+                        <h5 class="card-title">${news.title}</h5>
+                        <p class="card-text">${news.details}</p>
+                        
+                        <div class="d-flex">
+                            <img class="img-fluid rounded-circle w-25" src="${news.author.img}">
+                            <p class="card-text"><small class="text-info">${news.author['name']}</small></p>
+                            <p class="card-text ps-4"><small class="text-info">${news.total_view}</small></p>
+                            
+                            <button class="w-25 h-25 ms-5 bg-primary">Show Details</button>
                         </div>
+                        
+                        
+                        
                     </div>
                 </div>
             </div>
+        </div>
     `;
         newsContainer.appendChild(newsDiv);
     })
