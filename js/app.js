@@ -1,25 +1,70 @@
-const loadAllNews = async () => {
-    const response = await fetch("https://openapi.programming-hero.com/api/news/categories");
-    const data = await response.json();
-    //const allData = data.data.news_category;
-    return (data.data.news_category);
-
+const loadNewsCriteria = async () => {
+    const url = `https://openapi.programming-hero.com/api/news/categories`
+    const res = await fetch(url);
+    const data = await res.json();
+    displayCategories(data.data.news_category);
 }
 
-const loadAllCategories = async () => {
-    const data = await loadAllNews();
+const displayCategories = allNewsCategories => {
     const allCategories = document.getElementById('all-category');
-    for (const categories of data) {
+    for (const categories of allNewsCategories) {
         //console.log(categories.category_name);
         const li = document.createElement("li");
         li.innerHTML = `
         <li class="nav-item px-5">
-            <a class="nav-link active text-light rounded p-2" onclikc="">${categories.category_name}</a>
+            <a class="nav-link active text-light rounded p-2" href="" onclikc="funcName('${categories.category_id}')">${categories.category_name}</a>
         </li>
         `;
         allCategories.appendChild(li);
     }
 }
 
-loadAllCategories();
-//loadAllNews();
+loadNewsCriteria();
+
+
+const loadNews = async () => {
+    const url = `https://openapi.programming-hero.com/api/news/0282e0e58a5c404fbd15261f11c2ab6a`
+    const res = await fetch(url);
+    const data = await res.json();
+    newsBulletin(data.data);
+}
+
+const newsBulletin = allNews => {
+    const newsContainer = document.getElementById('news-container');
+    allNews.forEach(news => {
+        const newsDiv = document.createElement('div');
+        newsDiv.classList.add('col');
+        newsDiv.innerHTML = `
+    <div class="d-flex justify-content-between flex-cloumn flex-md-row shadow-sm card mb-3 ms-3"
+            style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="${news.thumbnail_url}" class="img-fluid rounded-start"
+                            alt="...">
+                    </div>
+                    <div class="col">
+                        <div class="card-body">
+                            <h5 class="card-title">${news.title}</h5>
+                            <p class="card-text">${news.details}</p>
+                            <div class="d-flex">
+                            <div>
+                                <img class="img-fluid rounded-circle" src="${news.author.img}">
+                            </div>
+                            <div>
+                                <p class="card-text"><small class="text-info">${news.author['name']}</small></p>
+                                <p class="card-text"><small class="text-info">${news.author['published_date']}</small></p>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    `;
+        newsContainer.appendChild(newsDiv);
+    })
+}
+
+loadNews();
+
+
+
