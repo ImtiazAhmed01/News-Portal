@@ -76,18 +76,18 @@ const displayNews = (categoriesNewsData, categoryName) => {
     cardMainContainer.textContent = '';
 
     categoriesNewsData.sort((news1, news2) => (news2.total_view - news1.total_view)).forEach(newsData => {
-        // console.log(newsData._id);
+
         const newsCardContainer = document.createElement('div');
         newsCardContainer.classList.add('col');
 
         newsCardContainer.innerHTML = `
-          <div class="card h-100 d-flex flex-lg-row flex-md-column flex-sm-column p-2">
-          <img src="${newsData.image_url ? newsData.image_url : "No Image Found"}"
-          class="card-img-top w-50 h-75 my-auto mx-auto" alt="img" />
+          <div class="card h-100 d-flex flex-lg-row flex-md-column flex-sm-column border border-dark">
+          <img class="img-fluid card-img-top w-50 h-100 my-auto mx-auto" src="${newsData.image_url ? newsData.image_url : "No Image Found"}"
+           alt="img" />
           <div class="card-body d-flex flex-column justify-content-between">
             <div>
               <h5 class="card-title card-heading">${newsData.title ? newsData.title : "No Title Found"}</h5>
-              <p class="card-text">${newsData.details.slice(0, 210) ? newsData.details.slice(0, 210) : "No News Found"} <span class="see-more">See More...</span>
+              <p class="card-text">${newsData.details.slice(0, 210) ? newsData.details.slice(0, 210) : "No News Found"} <span class="see-more">...</span>
               </p>
             </div>
             <div class="d-flex justify-content-between align-items-center">
@@ -98,15 +98,15 @@ const displayNews = (categoriesNewsData, categoryName) => {
               </div>
   
               <div>
-                <p><i class="fa-solid fa-eye"></i>${newsData.total_view ? newsData.total_view : "No Data"}</p>
+                <p><i class="fa-solid fa-eye me-3"></i>${newsData.total_view ? newsData.total_view : "No Data"}</p>
               </div>
   
               <div>
-                <p><i class="fa-solid fa-star"></i>${newsData.rating.number ? newsData.rating.number : "No Data"}</p>
+                <p><i class="fa-solid fa-star me-3"></i>${newsData.rating.number ? newsData.rating.number : "No Data"}</p>
               </div>
   
               <div>
-                <button type="button"onclick="showModal('${newsData._id}')" class="details-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button"onclick="showModal('${newsData._id}')" class="details-btn bg-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
                   Details
                 </button>
               </div>
@@ -164,7 +164,7 @@ const displayModal = modalDetails => {
           </div>
   
           <div class="modal-author-div d-flex gap-5 justify-content-evenly align-items-center">
-            <img class="author-img rounded-5" src="${modalDetails.author.img ? modalDetails.author.img : "No Data"}" alt="">
+            <img class="author-img rounded-5 w-25" src="${modalDetails.author.img ? modalDetails.author.img : "No Data"}" alt="">
             <h5>Author: ${modalDetails.author.name ? modalDetails.author.name : "No Data"}</h5>
             <h5>Date: ${modalDetails.published_date ? modalDetails.published_date.slice(0, 10) : "No Data"}</h5>
           </div>
