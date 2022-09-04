@@ -1,71 +1,146 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>News Around The World</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Daily Emporium</title>
+
+    <!-- CSS Link -->
+    <!-- <link rel="stylesheet" href="./style/news.css" /> -->
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon" />
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Advent+Pro&family=Khand&family=Saira+Condensed:wght@200&family=Staatliches&display=swap"
+        rel="stylesheet" />
+
+    <!-- FontAwesone -->
+    <script src="https://kit.fontawesome.com/16d08d23a3.js" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap CSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
 </head>
 
-<body>
-    <!-- Header starts -->
-    <header>
-        <!-- Navbar starts -->
-        <nav class="navbar navbar-expand-lg fixed-top bg-light ps-5">
-            <div class="container-fluid">
-                <h3 class="ms-4 mt-2"><span class="bg-primary rounded p-2">News Around</span>The World</h3>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <ul class="navbar-nav py-2 me-5 mt-2 fs-5">
-                        <li class="nav-item px-3 ">
-                            <a class="nav-link active text-primary" aria-current="page" href="#home"><ins>Home</ins></a>
-                        </li>
-                        <li class="nav-item px-5">
-                            <a class="nav-link active" href="#courses">Blog</a>
-                        </li>
-                    </ul>
+<body class="body">
+    <header class="container mt-3">
+        <!-- Navbar Section Start -->
 
+        <nav class="navbar bg-light rounded">
+            <div class="container-fluid">
+                <div>
+                    <h3 class="nav-heading">News Around The World</h3>
+                </div>
+
+                <div>
+                    <a class="navbar-link" href="">News</a>
+                    <a class="navbar-link" href="./question/ques.html">Blog</a>
+                    <img class="navbar-img" src="./img/bg1.png" alt="" />
                 </div>
             </div>
         </nav>
-        <!-- Navbar ends -->
-        <!-- <span class="h4 pb-2 mt-5 border-bottom border-dark"></span> -->
 
-        <!-- Category start  -->
-        <div class="mt-5 p-5">
-            <ul id="all-category" class="d-flex bg-dark">
-                <!-- <li class="list-group-item">An item</li>
-                <li class="list-group-item">A second item</li>
-                <li class="list-group-item">A third item</li> -->
-            </ul>
+
+        <div>
+            <hr class="navbar-hr" />
+        </div>
+        <!-- Navbar Section End -->
+    </header>
+
+    <main class="container">
+        <!-- Categores Section Start -->
+        <div>
+            <ul id="categories-ul" class="d-lg-flex justify-content-evenly rounded"></ul>
+        </div>
+        <!-- Categores Section End -->
+
+        <!-- How Many News Found Message Start -->
+        <div id="found-msg-div" class="my-3 rounded found-msg-div">
 
         </div>
-        <!-- Category end  -->
+        <!-- How Many News Found Message End -->
 
-    </header>
-    <!-- Header ends -->
 
-    <!-- Main start  -->
-    <main>
-        <section class="container">
-            <div id="news-container" class="row row-cols-2 row-cols-md-1 row-cols-sm-1 ">
-
+        <!-- Sort & Trending Div Start -->
+        <div id="sort-trending" class="my-3 rounded found-msg-div d-flex justify-content-between px-4">
+            <div class="d-flex justify-content-start align-items-center">
+                <div>
+                    <h5>Sort By: </h5>
+                </div>
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="accordion-item rounded">
+                        <h2 class="accordion-header" id="flush-headingOne">
+                            <button class="accordion-button collapsed collapse-btn" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                aria-controls="flush-collapseOne">Views</button>
+                        </h2>
+                    </div>
+                </div>
             </div>
 
-        </section>
+            <div class="d-flex justify-content-end align-items-center btn-div">
+                <button class="btn">Today's Pick</button>
+
+            </div>
+        </div>
+        <!-- Sort & Trending Div End -->
+
+
+        <!-- New Card Section Start -->
+
+        <div id="card-container" class="container row row-cols-1 row-cols-md-1 row-cols-lg-2 row-cols-sm-1 g-4">
+
+        </div>
+
+        <!-- New Card Section End -->
+
+
+        <!-- Modal Section Start -->
+
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div id="modal-main" class="modal-dialog">
+
+            </div>
+        </div>
+
+
+        <!-- Modal Section End -->
+
+        <!-- Spninner Start  -->
+
+        <div id="spinner-div" class="d-none">
+            <div id="loader-spinner" class="container"></div>
+        </div>
+
+        <!-- Spninner End  -->
+
+
     </main>
-    <!-- Main end  -->
 
 
-    <script src="js/app.js"></script>
+    <footer class="container my-3">
+        <div class="footer-div rounded">
+            <h5 class="text-center">The Daily Emporium</h5>
+            <p class="text-center"><i class="fa-sharp fa-solid fa-copyright"></i> Copyright The Daily Emporium Media
+                Wing</p>
+            <div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
         crossorigin="anonymous"></script>
+
+    <!-- JavaScript File -->
+    <script src="app.js"></script>
 </body>
 
 </html>
